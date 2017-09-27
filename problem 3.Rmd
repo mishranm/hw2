@@ -1,0 +1,29 @@
+---
+title: "Problem 3"
+author: "Narad Mishra"
+date: "September 27, 2017"
+output: html_document
+---
+
+**Write a function in R to solve the following problem: One dollar invested at an annual rate of *r* percent compounded monthly for *m* months is worth**
+
+$$ (1+\frac{r}{1200})^{m} $$
+
+```{r, echo=TRUE}
+compound<-function(r,m){
+  total<-(1+(r/1200))^m
+  return(total)
+}
+```
+
+How much will one dollar be worth at the end of 6 years at 6% interest?
+
+```{r, echo=FALSE}
+compound(6,72)
+```
+
+How much will it be if interest rate was 17%?
+
+```{r, echo=FALSE}
+compound(17,72)
+```

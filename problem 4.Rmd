@@ -1,0 +1,27 @@
+---
+title: "Problem 4"
+author: "Narad Mishra"
+date: "September 27, 2017"
+output: html_document
+---
+
+
+**A monthly loan payment is computed from the principle of the loan, *p*, the number of years of payments *y*, and the interest rate in percent *i*, according to the formula **
+
+$$ payment= p*\frac{(\frac{i}{1200})(1+\frac{i}{1200})^{12*y}}{(1+\frac{i}{1200})^{12*y}-1} $$
+
+Write an R function to carry out this computation. What would the monthly payment be for a $150,000 mortgage at 6.5% for 30 years?
+
+
+```{r}
+payment<-function(p,y,i){
+  nu<-(i/1200)*(1+(i/1200))^(12*y)
+  de<-((1+(i/1200))^(12*y))-1
+  total<-p*(nu/de)
+  return(total)
+}
+```
+```{r}
+payment(150000,30,6.5)
+```
+

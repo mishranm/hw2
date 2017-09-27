@@ -1,0 +1,75 @@
+---
+title: "Problem 2"
+author: "Narad Mishra"
+date: "September 26, 2017"
+output: html_document
+---
+
+```{r,warning=FALSE,message=FALSE}
+library(UsingR)
+```
+
+* I have selected a dataset named 'blood' to work with.
+
+```{r}
+data(blood)
+class(blood)
+str(blood)
+```
+
+* The dataset 'blood' is a reading of blood pressure of 15 males taken by machine and expert.
+
+summary of blood pressure measurement by Machine.
+```{r, echo=FALSE}
+summary(blood$Machine)
+```
+
+Summary of blood pressure measurement by Expert.
+```{r, echo=FALSE}
+summary(blood$Expert)
+```
+
+Fig 1: Histogram of Bp measured by Machine.
+```{r, echo=FALSE}
+hist(blood$Machine, main='Histogram of Machine BP reading',xlab='Blood pressure reading')
+```
+
+Fig 2: Histogram of Bp measured by Experts.
+```{r, echo=FALSE}
+hist(blood$Expert, main='Histogram of Expert BP reading', xlab='Blood pressure reading')
+```
+
+
+Table 1: Interactive table of blood pressure measurement.
+
+```{r}
+DT::datatable(blood)
+```
+
+
+Fig 3: Box plot with default scale (y-axis ranges from 70 to 110)
+```{r, echo=FALSE}
+boxplot(blood, col="bisque", boxwex=0.2, ylab='Pressure Reading')
+```
+
+Fig 4: Box plot with rescale Y-axis (value ranges from 70 to 100)
+```{r,echo=FALSE}
+boxplot(blood, col="bisque", boxwex=0.2, log="y", ylab='Pressure Reading')
+```
+
+Fig 5: Linear regression plot for Machine~Expert.
+```{r, echo=FALSE}
+xyplot(Machine~Expert, blood)
+```
+
+To know more about the data, two-sample t-test is performed.
+
+```{r,echo=FALSE}
+t.test(blood$Machine, blood$Expert, var.equal=TRUE)
+```
+
+Comment:
+From exploring the data blood, it looks the two measurements done my machine and experts are very similar. From the t.test, it is also seen that the two measurement are no different.
+
+
+ 
